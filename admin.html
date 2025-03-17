@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问卷调查管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold">问卷调查结果管理</h1>
+            <div>
+                <input type="password" id="adminPassword" placeholder="请输入管理员密码" class="px-4 py-2 border rounded-lg mr-2">
+                <button onclick="login()" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">登录</button>
+            </div>
+        </div>
+        
+        <div id="adminContent" class="hidden">
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                <h2 class="text-xl font-bold mb-4">统计概览</h2>
+                <div id="summary" class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                    <!-- 统计数据将在这里显示 -->
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-xl font-bold mb-4">详细记录</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">姓名</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">提交时间</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">老虎分数</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">孔雀分数</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">考拉分数</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">猫头鹰分数</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">变色龙分数</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsTable">
+                            <!-- 结果数据将在这里显示 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+                <button onclick="exportToExcel()" class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600">
+                    导出到Excel
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
